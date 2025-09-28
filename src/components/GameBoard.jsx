@@ -8,7 +8,7 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-const GameBoard = ({ xIsNext, squares, onPlay, score }) => {
+const GameBoard = ({ xIsNext, squares, onPlay, score, onReset }) => {
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -23,12 +23,22 @@ const GameBoard = ({ xIsNext, squares, onPlay, score }) => {
   }
 
   const winner = calculateWinner(squares);
+  const isDraw = squares.every(square => square !== null);
+
+  let status;
+  if (winner) {
+    status = 'Winner: ' + winner;
+  } else if (isDraw) {
+    status = 'Draw';
+  }
 
   return (
     <div className="game-board-container">
       <div className="score">
         <span>Alex</span>
-        <span>{score.X} - {score.O}</span>
+        <span>
+          {score.X} - {score.O}
+        </span>
         <span>AI</span>
       </div>
       <div className="board">
@@ -48,7 +58,14 @@ const GameBoard = ({ xIsNext, squares, onPlay, score }) => {
           <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
         </div>
       </div>
-      {winner && <div className="status">Winner: {winner}</div>}
+      {(winner || isDraw) && (
+        <div className="status">
+          {status}
+          <button className="btn btn-primary" onClick={onReset}>
+            Reset
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -54,6 +54,11 @@ export default function Game() {
     return <ChoosePlayer onSelectPlayer={handlePlayerSelect} />;
   }
 
+  function handleReset() {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+  }
+
   return (
     <div className="game">
       <GameBoard
@@ -61,6 +66,7 @@ export default function Game() {
         squares={currentSquares}
         onPlay={handlePlay}
         score={score}
+        onReset={handleReset}
       />
     </div>
   );
