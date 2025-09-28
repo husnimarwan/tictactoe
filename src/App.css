@@ -14,7 +14,6 @@ body {
   border-radius: 20px;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  width: 320px;
 }
 
 /* Home Component */
@@ -122,11 +121,10 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  width: 270px;
 }
 
 .square {
-  width: 80px;
-  height: 80px;
   background-color: #f5f5f5;
   border: none;
   border-radius: 10px;
@@ -134,7 +132,11 @@ body {
   font-weight: bold;
   color: #333;
   cursor: pointer;
-  transition: all 0.3s ease;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 .square:hover {
