@@ -31,20 +31,31 @@ export default function Game() {
 
   function handlePlayerSelect(selectedPlayer) {
     setPlayer(selectedPlayer);
+    if (selectedPlayer === 'O') {
+      const nextSquares = Array(9).fill(null);
+      nextSquares[4] = 'X'; // AI makes the first move in the center
+      handlePlay(nextSquares);
+    }
   }
 
   useEffect(() => {
-    if (mode === 'ai' && !xIsNext && !calculateWinner(currentSquares)) {
-      const emptySquares = currentSquares
-        .map((square, index) => (square === null ? index : null))
-        .filter(val => val !== null);
-      const randomIndex = Math.floor(Math.random() * emptySquares.length);
-      const aiMove = emptySquares[randomIndex];
-      const nextSquares = currentSquares.slice();
-      nextSquares[aiMove] = 'O';
-      handlePlay(nextSquares);
+    if (mode === 'ai' && !calculateWinner(currentSquares)) {
+      const isAiTurn = (player === 'X' && !xIsNext) || (player === 'O' && xIsNext);
+      if (isAiTurn) {
+        const aiSymbol = player === 'X' ? 'O' : 'X';
+        const emptySquares = currentSquares
+          .map((square, index) => (square === null ? index : null))
+          .filter(val => val !== null);
+        const randomIndex = Math.floor(Math.random() * emptySquares.length);
+        const aiMove = emptySquares[randomIndex];
+        if (aiMove !== undefined) {
+          const nextSquares = currentSquares.slice();
+          nextSquares[aiMove] = aiSymbol;
+          handlePlay(nextSquares);
+        }
+      }
     }
-  }, [mode, xIsNext, currentSquares]);
+  }, [mode, xIsNext, currentSquares, player]);
 
   if (!mode) {
     return <Home onSelectMode={handleModeSelect} />;
