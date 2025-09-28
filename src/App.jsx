@@ -75,6 +75,7 @@ export default function Game() {
     setPlayer(null);
     setHistory([Array(9).fill(null)]);
     setCurrentMove(0);
+    setScore({ X: 0, O: 0 });
   }
 
   return (
