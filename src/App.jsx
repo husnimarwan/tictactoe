@@ -31,7 +31,7 @@ export default function Game() {
 
   function handlePlayerSelect(selectedPlayer) {
     setPlayer(selectedPlayer);
-    if (selectedPlayer === 'O') {
+    if (selectedPlayer === 'O' && mode === 'ai') {
       const nextSquares = Array(9).fill(null);
       nextSquares[4] = 'X'; // AI makes the first move in the center
       handlePlay(nextSquares);
