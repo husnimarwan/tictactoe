@@ -8,7 +8,7 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-const GameBoard = ({ xIsNext, squares, onPlay, score, onReset, onGoToHome }) => {
+const GameBoard = ({ xIsNext, squares, onPlay, score, onReset, onGoToHome, mode }) => {
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -41,11 +41,11 @@ const GameBoard = ({ xIsNext, squares, onPlay, score, onReset, onGoToHome }) => 
         </svg>
       </button>
       <div className="score">
-        <div className="score-item">Player</div>
+        <div className="score-item">{mode === 'friend' ? 'Player 1' : 'Player'}</div>
         <div className="score-item">
           {score.X} - {score.O}
         </div>
-        <div className="score-item">AI</div>
+        <div className="score-item">{mode === 'friend' ? 'Player 2' : 'AI'}</div>
       </div>
       <div className="board">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />

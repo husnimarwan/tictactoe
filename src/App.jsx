@@ -87,6 +87,7 @@ export default function Game() {
         score={score}
         onReset={handleReset}
         onGoToHome={goToHome}
+        mode={mode}
       />
     </div>
   );
