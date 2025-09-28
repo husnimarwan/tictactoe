@@ -59,6 +59,13 @@ export default function Game() {
     setCurrentMove(0);
   }
 
+  function goToHome() {
+    setMode(null);
+    setPlayer(null);
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+  }
+
   return (
     <div className="game">
       <GameBoard
@@ -67,6 +74,7 @@ export default function Game() {
         onPlay={handlePlay}
         score={score}
         onReset={handleReset}
+        onGoToHome={goToHome}
       />
     </div>
   );
