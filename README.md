@@ -12,7 +12,7 @@ This is a classic Tic-Tac-Toe game built with React and Vite.
 
 ## Screenshot
 
-![Tic-Tac-Toe Game Screenshot](path/to/your/screenshot.png)
+![Tic-Tac-Toe Game Screenshot](screenshot.jpg)
 
 ## How to run
 
