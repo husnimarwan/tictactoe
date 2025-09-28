@@ -123,11 +123,24 @@ body {
 
 .score {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   margin-bottom: 1rem;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+.score-item {
+  flex: 1;
+  text-align: center;
+}
+
+.score-item:first-child {
+  text-align: left;
+}
+
+.score-item:last-child {
+  text-align: right;
 }
 
 .board {

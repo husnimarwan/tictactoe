@@ -41,11 +41,11 @@ const GameBoard = ({ xIsNext, squares, onPlay, score, onReset, onGoToHome }) => 
         </svg>
       </button>
       <div className="score">
-        <span>Alex</span>
-        <span>
+        <div className="score-item">Player</div>
+        <div className="score-item">
           {score.X} - {score.O}
-        </span>
-        <span>AI</span>
+        </div>
+        <div className="score-item">AI</div>
       </div>
       <div className="board">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
